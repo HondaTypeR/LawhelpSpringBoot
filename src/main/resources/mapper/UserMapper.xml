@@ -3,12 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.lawhelp.spring.dao.UserMapper" >
-
-    <select id="selectUserByName"  resultType="com.it.lawhelp.spring.vo.User">
-        SELECT * FROM user
-    </select>
-
-    <select id="getUsers"  resultType="com.it.lawhelp.spring.vo.User">
-        SELECT * FROM user
+    <insert id="addNewUser" parameterType="com.it.lawhelp.spring.vo.User">
+        INSERT  INTO user
+          (USERNAME,
+           PASSWORD,
+           PHONE,
+           ROLE
+          ) VALUES
+          (
+          #{username,jdbcType=VARCHAR},
+          #{password,jdbcType=VARCHAR},
+          #{phone,jdbcType=INTEGER},
+          #{role,jdbcType=INTEGER}
+          )
+    </insert>
+    <select id="selectIsName" resultType="String">
+        SELECT 1 FROM user WHERE USERNAME=#{username}
     </select>
 </mapper>
