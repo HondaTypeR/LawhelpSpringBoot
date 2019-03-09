@@ -18,4 +18,7 @@
     <select id="selectIsPhone" resultType="String">
         SELECT 1 FROM user WHERE PHONE=#{phone}
     </select>
+    <select id="login" resultType="String">
+    SELECT 1 FROM user WHERE PHONE=#{phone} AND PASSWORD=#{password}
+    </select>
 </mapper>
