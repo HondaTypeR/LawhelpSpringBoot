@@ -12,7 +12,7 @@ public class UserController{
     UserMapper userMapper;
 
     @GetMapping("/add/user/{username}/{password}/{phone}/{role}")
-    public Object addUser(@PathVariable String username, @PathVariable String password, @PathVariable int phone, @PathVariable int role, HttpServletResponse response) throws Exception {
+    public Object addUser(@PathVariable String username, @PathVariable String password, @PathVariable String phone, @PathVariable Integer role, HttpServletResponse response) throws Exception {
     User user =new User();
         if(userMapper.selectIsName(username)==null){
             user.setUsername(username);

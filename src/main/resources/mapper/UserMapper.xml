@@ -13,7 +13,7 @@
           (
           #{username,jdbcType=VARCHAR},
           #{password,jdbcType=VARCHAR},
-          #{phone,jdbcType=INTEGER},
+          #{phone,jdbcType=VARCHAR},
           #{role,jdbcType=INTEGER}
           )
     </insert>

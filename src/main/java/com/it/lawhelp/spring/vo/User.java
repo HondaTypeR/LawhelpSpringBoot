@@ -4,7 +4,7 @@ public class User {
    private String username;
    private String password;
    private int role;
-   private int phone;
+   private String phone;
 
     public String getMsg() {
         return msg;
@@ -21,10 +21,10 @@ public class User {
     public void setRole(int role) {
         this.role = role;
     }
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
     public String getPassword() {
