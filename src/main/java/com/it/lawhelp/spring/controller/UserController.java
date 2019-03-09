@@ -33,11 +33,11 @@ public class UserController{
     public Object login(@PathVariable String phone,@PathVariable String password,HttpServletResponse response) throws Exception {
         User user = new User();
         if(userMapper.login(phone,password)==null){
-            Result result = new Result(true,200,"成功",user);
+            Result result = new Result(false,200,"成功",user);
             user.setMsg("账号或密码有误，请重新输入");
             Json.toJson(result,response);
         }else{
-            Result result = new Result(false,200,"成功",user);
+            Result result = new Result(true,200,"成功",user);
             user.setMsg("登陆成功");
             Json.toJson(result,response);
         }
