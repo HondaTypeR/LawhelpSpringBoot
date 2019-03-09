@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
     int addNewUser(User user);
-    String selectIsName(String username);
+    String selectIsPhone(String phone);
 }

@@ -11,21 +11,20 @@ public class UserController{
     @Autowired
     UserMapper userMapper;
 
-    @GetMapping("/add/user/{username}/{password}/{phone}/{role}")
-    public Object addUser(@PathVariable String username, @PathVariable String password, @PathVariable String phone, @PathVariable Integer role, HttpServletResponse response) throws Exception {
+    @GetMapping("/add/user/{phone}/{password}/{username}")
+    public Object addUser(@PathVariable String phone, @PathVariable String password, @PathVariable String username, HttpServletResponse response) throws Exception {
     User user =new User();
-        if(userMapper.selectIsName(username)==null){
+        if(userMapper.selectIsPhone(phone)==null){
+            user.setPhone(phone);
             user.setUsername(username);
             user.setPassword(password);
-            user.setPhone(phone);
-            user.setRole(role);
             user.setMsg("恭喜注册成功");
             userMapper.addNewUser(user);
             Result result = new Result(true,200,"成功",user);
             Json.toJson(result,response);
         }else {
             Result result = new Result(false,200,"成功",user);
-            user.setMsg("该用户名已存在，请重新输入");
+            user.setMsg("该手机号已注册，请直接登陆");
             Json.toJson(result,response);
         }
         return user;

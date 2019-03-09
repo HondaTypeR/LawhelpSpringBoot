@@ -5,19 +5,17 @@
 <mapper namespace="com.it.lawhelp.spring.dao.UserMapper" >
     <insert id="addNewUser" parameterType="com.it.lawhelp.spring.vo.User">
         INSERT  INTO user
-          (USERNAME,
-           PASSWORD,
-           PHONE,
-           ROLE
+          (PHONE,
+           USERNAME,
+           PASSWORD
           ) VALUES
           (
-          #{username,jdbcType=VARCHAR},
-          #{password,jdbcType=VARCHAR},
           #{phone,jdbcType=VARCHAR},
-          #{role,jdbcType=INTEGER}
+          #{username,jdbcType=VARCHAR},
+          #{password,jdbcType=VARCHAR}
           )
     </insert>
-    <select id="selectIsName" resultType="String">
-        SELECT 1 FROM user WHERE USERNAME=#{username}
+    <select id="selectIsPhone" resultType="String">
+        SELECT 1 FROM user WHERE PHONE=#{phone}
     </select>
 </mapper>
