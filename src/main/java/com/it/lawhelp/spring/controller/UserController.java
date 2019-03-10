@@ -1,5 +1,6 @@
 package com.it.lawhelp.spring.controller;
 import com.it.lawhelp.spring.dao.UserMapper;
+import com.it.lawhelp.spring.vo.Professor;
 import com.it.lawhelp.spring.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -42,5 +43,24 @@ public class UserController{
             Json.toJson(result,response);
         }
         return user;
+    }
+    @GetMapping("add/professor/{phone}/{name}/{idcard}/{assestid}")
+    public Object addProfessor(@PathVariable String phone,@PathVariable String name,@PathVariable String idcard,@PathVariable String assestid,HttpServletResponse response) throws Exception {
+        Professor professor = new Professor();
+        if(userMapper.selectIsProfessor(assestid)==null){
+            professor.setPhone(phone);
+            professor.setName(name);
+            professor.setIdcard(idcard);
+            professor.setAssestid(assestid);
+            professor.setMsg("已提交成功，请耐心等待验证");
+            userMapper.addprofessor(professor);
+            Result result =new Result(true,200,"成功",professor);
+            Json.toJson(result,response);
+        }else{
+            Result result =new Result(false,200,"成功",professor);
+            professor.setMsg("该证件号已被验证，请确认");
+            Json.toJson(result,response);
+        }
+        return  professor;
     }
 }
