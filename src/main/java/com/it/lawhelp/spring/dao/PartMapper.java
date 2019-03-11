@@ -11,5 +11,6 @@ import java.util.List;
 @Mapper
 @Repository
 public interface PartMapper {
-    List<Part> selectPart( String province);
+    List<Part> selectCity(String province);
+    List<Part> selectProvince();
 }

@@ -3,10 +3,27 @@ package com.it.lawhelp.spring.vo;
 public class Question {
     private String title;
     private String details;
-    private String from;
+    private String province;
+    private String city;
     private String type;
     private String phone;
     private String username;
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 
     public String getTitle() {
         return title;
@@ -22,14 +39,6 @@ public class Question {
 
     public void setDetails(String details) {
         this.details = details;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
     }
 
     public String getType() {

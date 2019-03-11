@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.it.lawhelp.spring.dao.PartMapper" >
-   <select id="selectPart" resultMap="BaseMap">
+   <select id="selectCity" resultMap="BaseMap">
        SELECT city.NAME FROM city
         INNER JOIN province ON
         province.ID=city.PARENTID
@@ -13,4 +13,7 @@
         <id column="ID" property="id"></id>
         <result column="NAME" property="city"></result>
     </resultMap>
+    <select id="selectProvince" resultType="com.it.lawhelp.spring.vo.Part">
+        SELECT PROVINCENAME as province FROM province
+    </select>
 </mapper>

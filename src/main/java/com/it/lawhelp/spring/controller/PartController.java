@@ -14,15 +14,17 @@ import java.util.*;
 public class PartController {
     @Autowired
     PartMapper partMapper;
-    @GetMapping("/find/part/{province}")
-    public Object findPart(@PathVariable String province, HttpServletResponse response)throws Exception {
-
-
-
-
-        Result result = new Result(true,200,"成功",partMapper.selectPart(province));
+    @GetMapping("/find/city/{province}")
+    public Object findCity(@PathVariable String province, HttpServletResponse response)throws Exception {
+        Result result = new Result(true,200,"成功",partMapper.selectCity(province));
         Json.toJson(result,response);
-        return   partMapper.selectPart(province);
+        return  partMapper.selectCity(province);
+    }
+    @GetMapping("/find/province")
+    public Object findProvince(HttpServletResponse response)throws Exception {
+        Result result =new Result(true,200,"成功",partMapper.selectProvince());
+        Json.toJson(result,response);
+        return partMapper.selectProvince();
     }
 
 }
