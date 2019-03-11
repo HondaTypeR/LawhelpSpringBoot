@@ -1,5 +1,7 @@
 package com.it.lawhelp.spring.vo;
 
+import java.util.Date;
+
 public class Question {
     private String title;
     private String details;
@@ -8,6 +10,15 @@ public class Question {
     private String type;
     private String phone;
     private String username;
+    private Date createdate;
+
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
+    }
 
     public String getProvince() {
         return province;

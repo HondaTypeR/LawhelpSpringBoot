@@ -11,7 +11,8 @@
          USERNAME,
          PHONE,
          PROVINCE,
-         CITY
+         CITY,
+         DATE
         )VALUES
         (
         #{title,jdbcType=VARCHAR},
@@ -20,7 +21,20 @@
         #{username,jdbcType=VARCHAR},
         #{phone,jdbcType=VARCHAR},
         #{province,jdbcType=VARCHAR},
-        #{city,jdbcType=VARCHAR}
+        #{city,jdbcType=VARCHAR},
+        CURRENT_DATE
         )
     </insert>
+    <select id="findQuestion" resultType="com.it.lawhelp.spring.vo.Question">
+        SELECT
+        TITLE AS title,
+        DETAILS AS details,
+        TYPE AS type,
+        PHONE AS phone,
+        USERNAME AS username,
+        PROVINCE AS province,
+        CITY AS city,
+        date_format(CREATEDATE,'%Y-%d-%m' )AS createdate
+        FROM question
+    </select>
 </mapper>
