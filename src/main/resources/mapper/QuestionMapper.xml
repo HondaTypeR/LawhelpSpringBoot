@@ -49,8 +49,11 @@
         USERNAME AS username,
         PROVINCE AS province,
         CITY AS city,
-        date_format(CREATEDATE,'%Y-%d-%m')AS createdate
+        date_format(CREATEDATE,'%Y-%d-%m') AS createdate
         FROM question
         WHERE ID=#{id}
+    </select>
+    <select id="findProfessorRes" resultType="com.it.lawhelp.spring.vo.ProfessorRes">
+        SELECT * FROM professorRes WHERE professorRes.PARENTID =#{parentId,jdbcType=INTEGER}
     </select>
 </mapper>

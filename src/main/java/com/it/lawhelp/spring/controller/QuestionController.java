@@ -25,5 +25,9 @@ public class QuestionController {
     public Object findQuestionsById(@PathVariable("id") Integer id){
         return questionMapper.findQuestionById(id);
     }
+    @GetMapping("find/professorRes/{parentId}")
+    public Object findProfessorRes(@PathVariable("parentId") Integer parentId){
+        return  questionMapper.findProfessorRes(parentId);
+    }
 
 }
