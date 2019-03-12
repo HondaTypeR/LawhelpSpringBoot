@@ -26,13 +26,19 @@
         (PHONE,
         NAME,
         IDCARD,
-        ASSESTID
+        ASSESTID,
+        UNIT,
+        DUTY,
+        GOODAT
         ) VALUES
         (
         #{phone,jdbcType=VARCHAR},
         #{name,jdbcType=VARCHAR},
         #{idcard,jdbcType=VARCHAR},
-        #{assestid,jdbcType=VARCHAR}
+        #{assestid,jdbcType=VARCHAR},
+        #{unit,jdbcType=VARCHAR},
+        #{duty,jdbcType=VARCHAR},
+        #{goodat,jdbcType=VARCHAR}
         )
     </insert>
     <select id="selectIsProfessor" resultType="String">

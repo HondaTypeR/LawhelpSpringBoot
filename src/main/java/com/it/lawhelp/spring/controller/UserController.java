@@ -44,14 +44,18 @@ public class UserController{
         }
         return user;
     }
-    @GetMapping("add/professor/{phone}/{name}/{idcard}/{assestid}")
-    public Object addProfessor(@PathVariable String phone,@PathVariable String name,@PathVariable String idcard,@PathVariable String assestid,HttpServletResponse response) throws Exception {
+    @GetMapping("add/professor/{phone}/{name}/{idcard}/{assestid}/{unit}/{duty}/{goodat}")
+    public Object addProfessor(@PathVariable String phone,@PathVariable String name,@PathVariable String idcard,@PathVariable String assestid,
+                               @PathVariable String unit,@PathVariable String duty,@PathVariable String goodat, HttpServletResponse response) throws Exception {
         Professor professor = new Professor();
         if(userMapper.selectIsProfessor(assestid)==null){
             professor.setPhone(phone);
             professor.setName(name);
             professor.setIdcard(idcard);
             professor.setAssestid(assestid);
+            professor.setUnit(unit);
+            professor.setDuty(duty);
+            professor.setGoodat(goodat);
             professor.setMsg("已提交成功，请耐心等待验证");
             userMapper.addprofessor(professor);
             Result result =new Result(true,200,"成功",professor);

@@ -3,11 +3,9 @@ package com.it.lawhelp.spring.controller;
 import com.it.lawhelp.spring.dao.QuestionMapper;
 import com.it.lawhelp.spring.vo.Part;
 import com.it.lawhelp.spring.vo.Question;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,9 +19,11 @@ public class QuestionController {
     }
     @GetMapping("/find/questions")
     public Object findQuestions(){
-
-
         return questionMapper.findQuestion();
+    }
+    @GetMapping("/find/questions/{id}")
+    public Object findQuestionsById(@PathVariable("id") Integer id){
+        return questionMapper.findQuestionById(id);
     }
 
 }

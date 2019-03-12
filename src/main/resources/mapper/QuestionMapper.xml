@@ -5,7 +5,8 @@
 <mapper namespace="com.it.lawhelp.spring.dao.QuestionMapper">
     <insert id="addQuestion" parameterType="com.it.lawhelp.spring.vo.Question">
         INSERT INTO question
-        (TITLE,
+        (ID,
+         TITLE,
          DETAILS,
          TYPE,
          USERNAME,
@@ -27,6 +28,7 @@
     </insert>
     <select id="findQuestion" resultType="com.it.lawhelp.spring.vo.Question">
         SELECT
+        ID AS id,
         TITLE AS title,
         DETAILS AS details,
         TYPE AS type,
@@ -36,5 +38,19 @@
         CITY AS city,
         date_format(CREATEDATE,'%Y-%d-%m' )AS createdate
         FROM question
+    </select>
+    <select id="findQuestionById" resultType="com.it.lawhelp.spring.vo.Question">
+        SELECT
+        ID AS id,
+        TITLE AS title,
+        DETAILS AS details,
+        TYPE AS type,
+        PHONE AS phone,
+        USERNAME AS username,
+        PROVINCE AS province,
+        CITY AS city,
+        date_format(CREATEDATE,'%Y-%d-%m')AS createdate
+        FROM question
+        WHERE ID=#{id}
     </select>
 </mapper>

@@ -12,4 +12,5 @@ import java.util.List;
 public interface QuestionMapper {
     Boolean addQuestion(Question question);
     List<Part> findQuestion();
+    List<Part> findQuestionById(Integer id);
 }

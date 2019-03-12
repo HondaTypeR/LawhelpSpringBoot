@@ -6,6 +6,33 @@ public class Professor {
     private String idcard;
     private String assestid;
     private String msg;
+    private String unit;
+    private String duty;
+    private String goodat;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getDuty() {
+        return duty;
+    }
+
+    public void setDuty(String duty) {
+        this.duty = duty;
+    }
+
+    public String getGoodat() {
+        return goodat;
+    }
+
+    public void setGoodat(String goodat) {
+        this.goodat = goodat;
+    }
 
     public String getMsg() {
         return msg;

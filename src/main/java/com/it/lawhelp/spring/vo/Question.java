@@ -1,5 +1,7 @@
 package com.it.lawhelp.spring.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Question {
@@ -10,7 +12,16 @@ public class Question {
     private String type;
     private String phone;
     private String username;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createdate;
+    private int id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Date getCreatedate() {
         return createdate;
