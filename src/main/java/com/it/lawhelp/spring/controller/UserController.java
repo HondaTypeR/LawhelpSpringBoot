@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 public class UserController{
     @Autowired
     UserMapper userMapper;
-
     @GetMapping("/add/user/{phone}/{username}/{password}")
     public Object regin(@PathVariable String phone, @PathVariable String username, @PathVariable String password, HttpServletResponse response) throws Exception {
     User user =new User();

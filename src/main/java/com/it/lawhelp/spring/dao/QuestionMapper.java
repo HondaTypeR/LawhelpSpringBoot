@@ -15,4 +15,6 @@ public interface QuestionMapper {
     List<Part> findQuestion();
     List<Part> findQuestionById(Integer id);
     List<ProfessorRes> findProfessorRes(Integer parentId);
+    Boolean addimg(Question question);
+    Boolean addProfessorRes(ProfessorRes professorRes);
 }

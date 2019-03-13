@@ -13,7 +13,6 @@ public class ProfessorRes {
     private Date professorDate;
     private String professorRes;
     private int parentId;
-
     public String getProfessorRes() {
         return professorRes;
     }

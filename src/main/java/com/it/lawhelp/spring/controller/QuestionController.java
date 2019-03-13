@@ -2,6 +2,7 @@ package com.it.lawhelp.spring.controller;
 
 import com.it.lawhelp.spring.dao.QuestionMapper;
 import com.it.lawhelp.spring.vo.Part;
+import com.it.lawhelp.spring.vo.ProfessorRes;
 import com.it.lawhelp.spring.vo.Question;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +30,11 @@ public class QuestionController {
     public Object findProfessorRes(@PathVariable("parentId") Integer parentId){
         return  questionMapper.findProfessorRes(parentId);
     }
+    @PostMapping("/add/professorres")
+    public Boolean addProfessorRes(@RequestBody ProfessorRes professorRes){
+        Boolean tag = questionMapper.addProfessorRes(professorRes);
+        return  tag;
+    }
+
 
 }

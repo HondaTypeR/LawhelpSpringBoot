@@ -56,4 +56,7 @@
     <select id="findProfessorRes" resultType="com.it.lawhelp.spring.vo.ProfessorRes">
         SELECT * FROM professorRes WHERE professorRes.PARENTID =#{parentId,jdbcType=INTEGER}
     </select>
+    <insert id="addProfessorRes" parameterType="com.it.lawhelp.spring.vo.ProfessorRes">
+        INSERT  INTO professorres (PROFESSORRES) VALUES (#{professorRes,jdbcType=VARCHAR})
+    </insert>
 </mapper>
