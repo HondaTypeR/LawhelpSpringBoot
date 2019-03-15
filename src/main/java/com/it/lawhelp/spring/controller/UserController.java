@@ -5,6 +5,8 @@ import com.it.lawhelp.spring.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @RestController
@@ -31,17 +33,20 @@ public class UserController{
     }
     @GetMapping("/find/user/{phone}/{password}")
     public Object login(@PathVariable String phone,@PathVariable String password,HttpServletResponse response) throws Exception {
-        User user = new User();
         if(userMapper.login(phone,password)==null){
-            Result result = new Result(false,200,"成功",user);
-            user.setMsg("账号或密码有误，请重新输入");
+            Result result = new Result(false,200,"成功",userMapper.login(phone,password));
             Json.toJson(result,response);
         }else{
-            Result result = new Result(true,200,"成功",user);
-            user.setMsg("登陆成功");
+            Result result = new Result(true,200,"成功",userMapper.login(phone,password));;
             Json.toJson(result,response);
         }
-        return user;
+        return userMapper.login(phone,password);
+    }
+    @GetMapping("find/userinfos/{phone}")
+    public Object findUserInfos (@PathVariable String phone,HttpServletResponse response) throws Exception {
+        Result result = new Result(true,200,"成功",userMapper.findUserInfos(phone));
+        Json.toJson(result,response);
+        return userMapper.findUserInfos(phone);
     }
     @GetMapping("add/professor/{phone}/{name}/{idcard}/{assestid}/{unit}/{duty}/{goodat}")
     public Object addProfessor(@PathVariable String phone,@PathVariable String name,@PathVariable String idcard,@PathVariable String assestid,
@@ -65,5 +70,9 @@ public class UserController{
             Json.toJson(result,response);
         }
         return  professor;
+    }
+    @GetMapping("/find/professors/{phone}")
+    public Object findProfessor(@PathVariable String phone){
+      return   userMapper.findProfessors(phone);
     }
 }

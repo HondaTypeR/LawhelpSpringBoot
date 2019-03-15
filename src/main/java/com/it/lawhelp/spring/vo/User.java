@@ -5,6 +5,24 @@ public class User {
    private String password;
    private int role;
    private String phone;
+   private String balance;
+   private String total;
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
 
     public String getMsg() {
         return msg;

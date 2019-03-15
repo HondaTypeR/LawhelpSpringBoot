@@ -18,8 +18,8 @@
     <select id="selectIsPhone" resultType="String">
         SELECT 1 FROM user WHERE PHONE=#{phone}
     </select>
-    <select id="login" resultType="String">
-    SELECT 1 FROM user WHERE PHONE=#{phone} AND PASSWORD=#{password}
+    <select id="login" resultType="com.it.lawhelp.spring.vo.User">
+    SELECT * FROM user WHERE PHONE=#{phone} AND PASSWORD=#{password}
     </select>
     <insert id="addprofessor" parameterType="com.it.lawhelp.spring.vo.Professor">
         INSERT  INTO professor
@@ -44,5 +44,10 @@
     <select id="selectIsProfessor" resultType="String">
         select 1 FROM professor WHERE ASSESTID =#{assestid}
     </select>
-
+    <select id="findUserInfos" resultType="com.it.lawhelp.spring.vo.User">
+        SELECT * FROM user WHERE PHONE = #{phone}
+    </select>
+    <select id="findProfessors" resultType="com.it.lawhelp.spring.vo.Professor">
+        SELECT * FROM professor WHERE PHONE =#{phone}
+    </select>
 </mapper>

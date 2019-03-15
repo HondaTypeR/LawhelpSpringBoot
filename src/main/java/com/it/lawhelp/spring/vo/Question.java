@@ -13,21 +13,22 @@ public class Question {
     private String phone;
     private String username;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date createdate;
-    private int id;
-    public int getId() {
+    private String createdate;
+    private Integer id;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Date getCreatedate() {
+    public String getCreatedate() {
         return createdate;
     }
 
-    public void setCreatedate(Date createdate) {
+    public void setCreatedate(String createdate) {
         this.createdate = createdate;
     }
 

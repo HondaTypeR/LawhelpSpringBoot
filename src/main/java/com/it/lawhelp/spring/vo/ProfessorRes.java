@@ -10,7 +10,7 @@ public class ProfessorRes {
     private String professorDuty;
     private String goodat;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date professorDate;
+    private String professorDate;
     private String professorRes;
     private int parentId;
     public String getProfessorRes() {
@@ -53,11 +53,11 @@ public class ProfessorRes {
         this.goodat = goodat;
     }
 
-    public Date getProfessorDate() {
+    public String getProfessorDate() {
         return professorDate;
     }
 
-    public void setProfessorDate(Date professorDate) {
+    public void setProfessorDate(String professorDate) {
         this.professorDate = professorDate;
     }
 

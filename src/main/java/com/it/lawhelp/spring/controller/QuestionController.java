@@ -22,9 +22,13 @@ public class QuestionController {
     public Object findQuestions(){
         return questionMapper.findQuestion();
     }
-    @GetMapping("/find/questions/{id}")
-    public Object findQuestionsById(@PathVariable("id") Integer id){
-        return questionMapper.findQuestionById(id);
+    @GetMapping("/find/questions/{phone}")
+    public Object findQuestionsById(@PathVariable("phone") String phone){
+        return questionMapper.findQuestionById(phone);
+    }
+    @GetMapping("/find/questionsr/{id}")
+    public Object findQuestionsByIds(@PathVariable("id") Integer id){
+        return questionMapper.findQuestionByIds(id);
     }
     @GetMapping("find/professorRes/{parentId}")
     public Object findProfessorRes(@PathVariable("parentId") Integer parentId){
