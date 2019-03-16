@@ -13,6 +13,34 @@ public class ProfessorRes {
     private String professorDate;
     private String professorRes;
     private int parentId;
+    private String askAgain;
+    private String username;
+    private String peopleres;
+
+    public String getPeopleres() {
+        return peopleres;
+    }
+
+    public void setPeopleres(String peopleres) {
+        this.peopleres = peopleres;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAskAgain() {
+        return askAgain;
+    }
+
+    public void setAskAgain(String askAgain) {
+        this.askAgain = askAgain;
+    }
+
     public String getProfessorRes() {
         return professorRes;
     }

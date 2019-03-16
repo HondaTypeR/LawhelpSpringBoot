@@ -62,14 +62,20 @@
         PROFESSORDUTY,
         GOODAT,
         PROFESSORRES,
-        PARENTID
+        PARENTID,
+        ASKAGAIN,
+        USERNAME,
+        PEOPLERES
         ) VALUES
         (#{professorName,jdbcType=VARCHAR},
         #{professorUnit,jdbcType=VARCHAR},
         #{professorDuty,jdbcType=VARCHAR},
         #{goodat,jdbcType=VARCHAR},
         #{professorRes,jdbcType=VARCHAR},
-        #{parentId,jdbcType=INTEGER}
+        #{parentId,jdbcType=INTEGER},
+        #{askAgain,jdbcType=VARCHAR},
+        #{username,jdbcType=VARCHAR},
+        #{peopleres,jdbcType=VARCHAR}
         )
     </insert>
     <!--回复-->

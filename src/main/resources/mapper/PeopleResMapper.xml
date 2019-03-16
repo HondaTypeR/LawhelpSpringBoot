@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.lawhelp.spring.dao.PeopleMapper">
+    <select id="findPeopleRes" resultType="com.it.lawhelp.spring.vo.PeopleRes">
+        SELECT * FROM peoplerespon WHERE peoplerespon.PARENTID =#{parentId,jdbcType=INTEGER}
+    </select>
+    <insert id="addPeopleRes" parameterType="com.it.lawhelp.spring.vo.PeopleRes">
+        INSERT  INTO peoplerespon
+        (
+        PEOPLENAME,
+        PEOPLERES,
+        PARENTID
+        )VALUES
+        (
+        #{peopleName,jdbcType=VARCHAR},
+        #{peopleRes,jdbcType=VARCHAR},
+        #{parentid,jdbcType=INTEGER}
+        )
+    </insert>
+</mapper>

@@ -30,7 +30,7 @@ public class QuestionController {
     public Object findQuestionsByIds(@PathVariable("id") Integer id){
         return questionMapper.findQuestionByIds(id);
     }
-    @GetMapping("find/professorRes/{parentId}")
+    @GetMapping("/find/professorRes/{parentId}")
     public Object findProfessorRes(@PathVariable("parentId") Integer parentId){
         return  questionMapper.findProfessorRes(parentId);
     }
