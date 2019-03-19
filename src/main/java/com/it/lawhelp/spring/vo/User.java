@@ -6,7 +6,7 @@ public class User {
    private int role;
    private String phone;
    private String balance;
-   private String total;
+   private int total;
 
     public String getBalance() {
         return balance;
@@ -16,11 +16,11 @@ public class User {
         this.balance = balance;
     }
 
-    public String getTotal() {
+    public int getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(int total) {
         this.total = total;
     }
 

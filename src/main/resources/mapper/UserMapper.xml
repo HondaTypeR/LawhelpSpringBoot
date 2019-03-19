@@ -7,12 +7,18 @@
         INSERT  INTO user
           (PHONE,
            USERNAME,
-           PASSWORD
+           PASSWORD,
+           ROLE,
+           BALANCE,
+           TOTAL
           ) VALUES
           (
           #{phone,jdbcType=VARCHAR},
           #{username,jdbcType=VARCHAR},
-          #{password,jdbcType=VARCHAR}
+          #{password,jdbcType=VARCHAR},
+          #{role,jdbcType=INTEGER},
+          #{balance,jdbcType=VARCHAR},
+          #{total,jdbcType=VARCHAR}
           )
     </insert>
     <select id="selectIsPhone" resultType="String">
@@ -50,4 +56,30 @@
     <select id="findProfessors" resultType="com.it.lawhelp.spring.vo.Professor">
         SELECT * FROM professor WHERE PHONE =#{phone}
     </select>
+    <select id="findHotProfessor" resultType="com.it.lawhelp.spring.vo.Professor">
+        SELECT * FROM professor WHERE professor.HOT =1
+    </select>
+    <select id="findHotProfessorById" resultType="com.it.lawhelp.spring.vo.Professor">
+        SELECT * FROM professor WHERE professor.ID=#{ID,jdbcType=INTEGER}
+    </select>
+    <update id="updateTotal" parameterType="com.it.lawhelp.spring.vo.User">
+         UPDATE user
+                SET
+                TOTAL = #{total,jdbcType=INTEGER}
+                WHERE
+                PHONE = #{phone,jdbcType=VARCHAR}
+    </update>
+    <update id="updateUserInfo" parameterType="com.it.lawhelp.spring.vo.User">
+        UPDATE  user
+              <trim prefix="set" suffixOverrides=",">
+                  <if test="username!=null"> USERNAME=#{username,jdbcType=VARCHAR},</if>
+                  <if test="password!=null"> PASSWORD=#{password,jdbcType=VARCHAR},</if>
+                  <if test="role!=null"> ROLE=#{role,jdbcType=INTEGER}</if>
+              </trim>
+        WHERE
+        PHONE=#{phone,jdbcType=VARCHAR}
+    </update>
 </mapper>
+
+
+

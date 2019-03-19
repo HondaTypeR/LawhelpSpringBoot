@@ -1,7 +1,9 @@
 package com.it.lawhelp.spring.controller;
 import com.it.lawhelp.spring.dao.UserMapper;
+import com.it.lawhelp.spring.vo.Img;
 import com.it.lawhelp.spring.vo.Professor;
 import com.it.lawhelp.spring.vo.User;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
@@ -13,13 +15,17 @@ import java.util.List;
 public class UserController{
     @Autowired
     UserMapper userMapper;
-    @GetMapping("/add/user/{phone}/{username}/{password}")
-    public Object regin(@PathVariable String phone, @PathVariable String username, @PathVariable String password, HttpServletResponse response) throws Exception {
+    @GetMapping("/add/user/{phone}/{username}/{password}/{role}/{balance}/{total}")
+    public Object regin(@PathVariable String phone, @PathVariable String username, @PathVariable String password,
+                        @PathVariable Integer role,@PathVariable String balance, @PathVariable Integer total, HttpServletResponse response) throws Exception {
     User user =new User();
         if(userMapper.selectIsPhone(phone)==null){
             user.setPhone(phone);
             user.setUsername(username);
             user.setPassword(password);
+            user.setRole(role);
+            user.setBalance(balance);
+            user.setTotal(total);
             user.setMsg("恭喜注册成功");
             userMapper.addNewUser(user);
             Result result = new Result(true,200,"成功",user);
@@ -74,5 +80,25 @@ public class UserController{
     @GetMapping("/find/professors/{phone}")
     public Object findProfessor(@PathVariable String phone){
       return   userMapper.findProfessors(phone);
+    }
+    @GetMapping("/find/hotprofessor")
+    public Object findHotProfessor(){
+        return userMapper.findHotProfessor();
+    }
+    @GetMapping("/find/hotprofessor/{id}")
+    public Object findHotProfessorById(@PathVariable("id") Integer ID){
+        return userMapper.findHotProfessorById(ID);
+    }
+    @GetMapping("/update/total/{total}/{phone}")
+    public Boolean updateTotal(@PathVariable("total") Integer total, @PathVariable("phone") String phone){
+        User user=new User();
+        user.setTotal(total);
+        user.setPhone(phone);
+        Boolean tag=userMapper.updateTotal(user);
+        return  tag;
+    }
+    @PostMapping("/update/userinfo")
+    public Object updateUserInfo(@RequestBody User user){
+        return userMapper.updateUserInfo(user);
     }
 }

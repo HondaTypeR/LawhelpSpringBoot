@@ -19,4 +19,8 @@ public interface UserMapper {
     String selectIsProfessor(String assestid);
     List<User> findUserInfos(@Param("phone") String phone);
     List<Professor> findProfessors(@Param("phone") String phone);
+    List<Professor> findHotProfessor();
+    List<Professor> findHotProfessorById(Integer ID);
+    Boolean updateTotal(User user);
+    Boolean updateUserInfo(User user);
 }

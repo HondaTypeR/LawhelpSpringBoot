@@ -9,6 +9,15 @@ public class Professor {
     private String unit;
     private String duty;
     private String goodat;
+    private int ID;
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     public String getUnit() {
         return unit;

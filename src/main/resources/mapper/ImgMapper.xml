@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.lawhelp.spring.dao.ImgMapper">
+    <insert id="test" parameterType="com.it.lawhelp.spring.vo.Img">
+        insert into img
+        (IMGURL)
+        VALUES
+        (#{img,jdbcType=VARCHAR})
+    </insert>
+    <select id="findimg" resultType="com.it.lawhelp.spring.vo.Img">
+        select * from img WHERE ID=#{id,jdbcType=INTEGER}
+    </select>
+    <insert id="addimg" parameterType="com.it.lawhelp.spring.vo.Img">
+        insert into img
+        (img.HOT)
+        values
+        (#{hot,jdbcType=VARCHAR})
+    </insert>
+</mapper>
