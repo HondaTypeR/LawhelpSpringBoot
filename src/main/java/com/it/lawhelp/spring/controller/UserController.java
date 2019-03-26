@@ -54,9 +54,10 @@ public class UserController{
         Json.toJson(result,response);
         return userMapper.findUserInfos(phone);
     }
-    @GetMapping("add/professor/{phone}/{name}/{idcard}/{assestid}/{unit}/{duty}/{goodat}")
+    @GetMapping("add/professor/{phone}/{name}/{idcard}/{assestid}/{unit}/{duty}/{goodat}/{address}/{email}/{parentId}")
     public Object addProfessor(@PathVariable String phone,@PathVariable String name,@PathVariable String idcard,@PathVariable String assestid,
-                               @PathVariable String unit,@PathVariable String duty,@PathVariable String goodat, HttpServletResponse response) throws Exception {
+                               @PathVariable String unit,@PathVariable String duty,@PathVariable String goodat,
+                               @PathVariable String address,@PathVariable String email,@PathVariable Integer parentId, HttpServletResponse response) throws Exception {
         Professor professor = new Professor();
         if(userMapper.selectIsProfessor(assestid)==null){
             professor.setPhone(phone);
@@ -66,6 +67,9 @@ public class UserController{
             professor.setUnit(unit);
             professor.setDuty(duty);
             professor.setGoodat(goodat);
+            professor.setAddress(address);
+            professor.setEmail(email);
+            professor.setParentId(parentId);
             professor.setMsg("已提交成功，请耐心等待验证");
             userMapper.addprofessor(professor);
             Result result =new Result(true,200,"成功",professor);
@@ -81,13 +85,14 @@ public class UserController{
     public Object findProfessor(@PathVariable String phone){
       return   userMapper.findProfessors(phone);
     }
-    @GetMapping("/find/hotprofessor")
-    public Object findHotProfessor(){
-        return userMapper.findHotProfessor();
+    @GetMapping("/find/hotprofessor/{parentId}")
+    public Object findHotProfessor(@PathVariable("parentId") int parentId){
+
+        return userMapper.findHotProfessor(parentId);
     }
-    @GetMapping("/find/hotprofessor/{id}")
-    public Object findHotProfessorById(@PathVariable("id") Integer ID){
-        return userMapper.findHotProfessorById(ID);
+    @GetMapping("/find/hotprofessor/{phone}/{parentId}")
+    public Object findHotProfessorById(@PathVariable("phone") String phone,@PathVariable("parentId") int parentId){
+        return userMapper.findHotProfessorById(phone,parentId);
     }
     @GetMapping("/update/total/{total}/{phone}")
     public Boolean updateTotal(@PathVariable("total") Integer total, @PathVariable("phone") String phone){

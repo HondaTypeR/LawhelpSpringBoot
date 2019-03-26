@@ -35,7 +35,10 @@
         ASSESTID,
         UNIT,
         DUTY,
-        GOODAT
+        GOODAT,
+        ADDRESS,
+        EMAIL,
+        PARENTID
         ) VALUES
         (
         #{phone,jdbcType=VARCHAR},
@@ -44,7 +47,10 @@
         #{assestid,jdbcType=VARCHAR},
         #{unit,jdbcType=VARCHAR},
         #{duty,jdbcType=VARCHAR},
-        #{goodat,jdbcType=VARCHAR}
+        #{goodat,jdbcType=VARCHAR},
+        #{address,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},
+        #{parentId,jdbcType=INTEGER}
         )
     </insert>
     <select id="selectIsProfessor" resultType="String">
@@ -57,10 +63,16 @@
         SELECT * FROM professor WHERE PHONE =#{phone}
     </select>
     <select id="findHotProfessor" resultType="com.it.lawhelp.spring.vo.Professor">
-        SELECT * FROM professor WHERE professor.HOT =1
+        SELECT * FROM professor WHERE
+        professor.HOT =1
+        and
+        professor.PARENTID=#{parentId,jdbcType=INTEGER}
     </select>
     <select id="findHotProfessorById" resultType="com.it.lawhelp.spring.vo.Professor">
-        SELECT * FROM professor WHERE professor.ID=#{ID,jdbcType=INTEGER}
+        SELECT * FROM professor WHERE
+        professor.PHONE=#{phone,jdbcType=VARCHAR}
+        and
+        professor.PARENTID=#{parentId,jdbcType=INTEGER}
     </select>
     <update id="updateTotal" parameterType="com.it.lawhelp.spring.vo.User">
          UPDATE user
