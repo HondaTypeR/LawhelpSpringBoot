@@ -59,6 +59,7 @@ public class UserController{
                                @PathVariable String unit,@PathVariable String duty,@PathVariable String goodat,
                                @PathVariable String address,@PathVariable String email,@PathVariable Integer parentId, HttpServletResponse response) throws Exception {
         Professor professor = new Professor();
+
         if(userMapper.selectIsProfessor(assestid)==null){
             professor.setPhone(phone);
             professor.setName(name);
