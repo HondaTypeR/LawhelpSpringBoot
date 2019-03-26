@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.lawhelp.spring.dao.CaseMapper" >
+    <select id="selectCase" resultType="com.it.lawhelp.spring.vo.Case">
+        SELECT * FROM cases
+        WHERE cases.ID=#{ID,jdbcType=INTEGER}
+   </select>
+    <select id="selectAllCase" resultType="com.it.lawhelp.spring.vo.Case">
+        SELECT * FROM cases
+        WHERE cases.PARENTID=#{parentId,jdbcType=INTEGER}
+        limit #{currPage} , #{pageSize}
+    </select>
+</mapper>
